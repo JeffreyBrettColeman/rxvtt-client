@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { RenderEvent } from '../model/events/render-event';
-import { SpriteRepositoryService } from './sprite-repository.service';
 import * as PIXI from 'pixi.js';
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +12,16 @@ export class RenderingSubjectsService {
   currentRotation: number = 0.01;
 
 
-  constructor(private spriteRepositoryService: SpriteRepositoryService) {
-    spriteRepositoryService.addSprite('bunny', 'assets/bunny.png');
+  constructor() {
   }
 
   public startRendering() {
-    this.spriteRepositoryService.spriteArray.forEach(description => { this.app.loader.add(description.name, description.path) });
-
-    this.app.loader.load((loader, resources) => {
+    this.app.loader.add('bunny', 'assets/bunny.png').load((loader, resources) => {
       // This creates a texture from a 'bunny.png' image
-      const bunny =
+      const bunny = new PIXI.Sprite(resources.bunny.texture);
 
-        // Setup the position of the bunny
-        bunny.x = this.app.renderer.width / 2;
+      // Setup the position of the bunny
+      bunny.x = this.app.renderer.width / 2;
       bunny.y = this.app.renderer.height / 2;
 
       // Rotate around the center
