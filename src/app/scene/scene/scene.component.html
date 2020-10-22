@@ -1,0 +1,7 @@
+<canvas id="glCanvas" #glCanvas width="100%" height="100%"></canvas>
+
+<button type="button" mat-raised-button (click)="currentRotation = currentRotation - 0.01">-
+</button>
+<button type="button" mat-raised-button (click)="currentRotation = currentRotation + 0.01">+
+</button>
+<input #rotationInput name="counter" type="text" size="2" min="0" [(value)]="currentRotation" required>
