@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class SpriteRepositoryService {
   spriteArray: Array<PIXI.Sprite>;
   constructor() { }
+
+  public addSprite(name: string, path: string) {
+    this.spriteArray.push();
+
+  }
 }
